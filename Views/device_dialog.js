@@ -533,12 +533,10 @@ var device_dialog =
     },
 
     'registerDeleteEvents':function(row) {
-        
         $("#device-delete-confirm").off('click').on('click', function() {
             device.remove(device_dialog.device.id);
             if (row != null) {
                 table.remove(row);
-                update();
             }
             else if (typeof device_dialog.device.inputs !== 'undefined') {
                 // If the table row is undefined and an input list exists, the config dialog
@@ -550,6 +548,7 @@ var device_dialog =
                 }
                 input.delete_multiple(inputIds);
             }
+            update();
             $('#device-delete-modal').modal('hide');
         });
     }
