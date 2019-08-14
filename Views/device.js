@@ -47,3 +47,19 @@ var device = {
         return result;
     }
 }
+
+/**
+ * async version of above functions
+ * similar to above but returns the ajax promise for the calling function to act on the response without blocking
+ * 
+ * eg.
+ * device2.remove(device_id).done(function(data){
+ *    console.log(data)
+ * })
+ */
+ 
+var device2 = {
+    remove: function(id) {
+        return $.getJSON(path+"device/delete.json", "id="+id)
+    }
+}
